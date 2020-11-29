@@ -7,7 +7,7 @@ logging.basicConfig()
 logger = logging.getLogger()
 coloredlogs.install(level='INFO', logger=logger)
 
-from termcolor import colored, cprint
+from termcolor import colored
 # from sty import fg, bg, ef, rs
 
 def toRed(text):

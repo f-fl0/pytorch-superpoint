@@ -5,7 +5,6 @@ logs/magicpoint_synth20/checkpoints/superPointNet_200000_checkpoint.pth.tar
 
 import torch
 import torch.nn as nn
-from torch.nn.init import xavier_uniform_, zeros_
 from models.unet_parts import *
 
 # from models.SubpixelNet import SubpixelNet

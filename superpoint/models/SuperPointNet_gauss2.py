@@ -4,9 +4,7 @@
 
 import torch
 import torch.nn as nn
-from torch.nn.init import xavier_uniform_, zeros_
 from .unet_parts import *
-import numpy as np
 
 # from models.SubpixelNet import SubpixelNet
 class SuperPointNet_gauss2(torch.nn.Module):

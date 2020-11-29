@@ -9,7 +9,6 @@ import cv2
 
 class ImgAugTransform:
     def __init__(self, **config):
-        from numpy.random import uniform
         from numpy.random import randint
 
         ## old photometric

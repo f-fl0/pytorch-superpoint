@@ -4,17 +4,14 @@ import torch
 # math
 import numpy as numpy
 import numpy as np
-import math
 from numpy.linalg import inv
 import random
 
 # io
-from PIL import Image
 
 # torchvision
 import sys
 sys.path.insert(0, '../pytorch-segmentation-detection/vision/') # from subrepo
-from torchvision import transforms
 
 
 # from dense_correspondence_manipulation.utils.constants import *

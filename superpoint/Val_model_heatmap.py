@@ -5,27 +5,17 @@ Date: 2019/12/12
 """
 
 
-import numpy as np
 import torch
-from torch.autograd import Variable
-import torch.backends.cudnn as cudnn
 import torch.optim
-import torch.nn as nn
-import torch.nn.functional as F
 import torch.utils.data
 from tqdm import tqdm
-from utils.loader import dataLoader, modelLoader, pretrainedLoader
+from utils.loader import dataLoader
 import logging
 
-from utils.tools import dict_update
 
-from utils.utils import labels2Dto3D, flattenDetection, labels2Dto3D_flattened
+from utils.utils import flattenDetection
 
-from utils.utils import pltImshow, saveImg
-from utils.utils import precisionRecall_torch
-from utils.utils import save_checkpoint
 
-from pathlib import Path
 from models.model_wrap import SuperPointFrontend_torch
 
 @torch.no_grad()
@@ -55,7 +45,6 @@ class Val_model_heatmap(SuperPointFrontend_torch):
         self.pts_nms_batch = None
         self.desc_sparse_batch = None
         self.patches = None
-        pass
 
 
     def loadModel(self):
@@ -70,7 +59,6 @@ class Val_model_heatmap(SuperPointFrontend_torch):
 
         self.net = self.net.to(self.device)
         logging.info('successfully load pretrained model from: %s', self.weights_path)
-        pass
 
     def extract_patches(self, label_idx, img):
         """
@@ -83,7 +71,6 @@ class Val_model_heatmap(SuperPointFrontend_torch):
         patches = extract_patches(label_idx.to(self.device), img.to(self.device), 
             patch_size=patch_size)
         return patches
-        pass
 
     def run(self, images):
         """
@@ -109,7 +96,6 @@ class Val_model_heatmap(SuperPointFrontend_torch):
         heatmap_np = toNumpy(heatmap)
         self.heatmap = heatmap_np
         return self.heatmap
-        pass
 
     def heatmap_to_pts(self):
         heatmap_np = self.heatmap

@@ -2,25 +2,15 @@
 """
 
 
-import numpy as np
 import torch
-from torch.autograd import Variable
-import torch.backends.cudnn as cudnn
 import torch.optim
-import torch.nn as nn
-import torch.nn.functional as F
 import torch.utils.data
-from tqdm import tqdm
 from utils.loader import dataLoader, modelLoader, pretrainedLoader
 import logging
 
 from utils.tools import dict_update
 
-from utils.utils import labels2Dto3D, flattenDetection, labels2Dto3D_flattened
 
-from utils.utils import pltImshow, saveImg
-from utils.utils import precisionRecall_torch
-from utils.utils import save_checkpoint
 
 from pathlib import Path
 from Train_model_frontend import Train_model_frontend
@@ -48,7 +38,6 @@ class Train_model_subpixel(Train_model_frontend):
         self._train = True
         self._eval = True
 
-        pass
     def print(self):
         print("hello")
 
@@ -69,7 +58,6 @@ class Train_model_subpixel(Train_model_frontend):
         ## load pretrained
         if self.config['retrain'] == True:
             logging.info("New model")
-            pass
         else:
             path = self.config['pretrained']
             mode = '' if path[:-3] == '.pth' else 'full'
@@ -87,7 +75,6 @@ class Train_model_subpixel(Train_model_frontend):
         self.net = net
         self.optimizer = optimizer
         self.n_iter = setIter(n_iter)
-        pass
 
     def train_val_sample(self, sample, n_iter=0, train=False):
         task = 'train' if train else 'val'
@@ -199,7 +186,6 @@ class Train_model_subpixel(Train_model_frontend):
         for element in list(tb_dict):
             self.writer.add_histogram(task + '-' + element, 
               tb_dict[element], self.n_iter)  
-        pass
 
 
 
@@ -241,7 +227,6 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print ("press ctrl + c, save model!")
         train_agent.saveModel()
-        pass
 
     # try:
     #     # train function takes care of training and evaluation

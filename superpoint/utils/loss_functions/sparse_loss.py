@@ -223,7 +223,6 @@ def descriptor_loss_sparse(descriptors, descriptors_warped, homographies, mask_v
 
     loss = lamda_d * match_loss + non_match_loss
     return loss, lamda_d * match_loss, non_match_loss
-    pass
 
 """
 img[uv_b_matches.long()[:,1],uv_b_matches.long()[:,0]] = 1

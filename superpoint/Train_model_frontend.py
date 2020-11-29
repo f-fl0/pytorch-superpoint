@@ -11,7 +11,6 @@ import torch
 # import torch.backends.cudnn as cudnn
 import torch.optim
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.utils.data
 from tqdm import tqdm
 from .utils.loader import dataLoader, modelLoader, pretrainedLoader
@@ -20,7 +19,7 @@ import logging
 from .utils.tools import dict_update
 
 from .utils.utils import labels2Dto3D, flattenDetection, labels2Dto3D_flattened
-from .utils.utils import pltImshow, saveImg
+from .utils.utils import saveImg
 from .utils.utils import precisionRecall_torch
 from .utils.utils import save_checkpoint
 
@@ -131,7 +130,6 @@ class Train_model_frontend(object):
         # self.net = self.loadModel(*config['model'])
         self.printImportantConfig()
 
-        pass
 
     def printImportantConfig(self):
         """
@@ -150,7 +148,6 @@ class Train_model_frontend(object):
             print(item, ": ", self.desc_params[item])
 
         print("=" * 32)
-        pass
 
     def dataParallel(self):
         """
@@ -162,7 +159,6 @@ class Train_model_frontend(object):
         self.optimizer = self.adamOptim(
             self.net, lr=self.config["model"]["learning_rate"]
         )
-        pass
 
     def adamOptim(self, net, lr):
         """
@@ -194,7 +190,6 @@ class Train_model_frontend(object):
         ## new model or load pretrained
         if self.config["retrain"] == True:
             logging.info("New model")
-            pass
         else:
             path = self.config["pretrained"]
             mode = "" if path[-4:] == ".pth" else "full" # the suffix is '.pth' or 'tar.gz'
@@ -213,7 +208,6 @@ class Train_model_frontend(object):
         self.net = net
         self.optimizer = optimizer
         self.n_iter = setIter(n_iter)
-        pass
 
 
     @property
@@ -297,7 +291,6 @@ class Train_model_frontend(object):
                     logging.info("End training: %d", self.n_iter)
                     break
 
-        pass
 
     def getLabels(self, labels_2D, cell_size, device="cpu"):
         """
@@ -412,7 +405,6 @@ class Train_model_frontend(object):
                 )
                 semi, coarse_desc = outs[0], outs[1]
                 semi_warp, coarse_desc_warp = outs_warp[0], outs_warp[1]
-                pass
 
         # detector loss
         ## get labels, masks, loss for detection
@@ -593,7 +585,6 @@ class Train_model_frontend(object):
             },
             self.n_iter,
         )
-        pass
 
     def add_single_image_to_tb(self, task, img_tensor, n_iter, name="img"):
         """
@@ -732,7 +723,6 @@ class Train_model_frontend(object):
             self.writer.add_histogram(
                 task + "-" + element, tb_dict[element], self.n_iter
             )
-        pass
 
     def printLosses(self, losses, task="training"):
         """

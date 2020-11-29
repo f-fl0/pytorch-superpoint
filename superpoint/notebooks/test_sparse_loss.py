@@ -25,7 +25,6 @@ print(module_path)
 # get_ipython().run_line_magic('autoreload', '2')
 # import dense_correspondence_manipulation.utils.utils as utils
 # utils.add_dense_correspondence_to_python_path()
-import utils.correspondence_tools.correspondence_plotter as correspondence_plotter
 import utils.correspondence_tools.correspondence_finder as correspondence_finder
 # from dense_correspondence.dataset.spartan_dataset_masked import SpartanDataset
 import os
@@ -416,7 +415,6 @@ def descriptor_loss_sparse(descriptors, descriptors_warped, homographies, mask_v
 
     loss = lamda_d*match_loss + non_match_loss
     return loss
-    pass
 
 
 

@@ -5,11 +5,9 @@ from pathlib import Path
 import torch.utils.data as data
 
 # from .base_dataset import BaseDataset
-from settings import DATA_PATH, EXPER_PATH
+from settings import DATA_PATH
 from utils.tools import dict_update
 import cv2
-from utils.utils import homography_scaling_torch as homography_scaling
-from utils.utils import filter_points
 
 class Coco(data.Dataset):
     default_config = {
@@ -84,7 +82,6 @@ class Coco(data.Dataset):
                 #     print ("only load one image!!!")
                 #     print ("only load one image!!!")
                 #     break
-            pass
         else:
             for (img, name) in zip(files['image_paths'], files['names']):
                 sample = {'image': img, 'name': name}
@@ -93,7 +90,6 @@ class Coco(data.Dataset):
 
         self.init_var()
 
-        pass
 
     def init_var(self):
         torch.set_default_tensor_type(torch.FloatTensor)
@@ -126,7 +122,6 @@ class Coco(data.Dataset):
             self.gaussian_label = True
             y, x = self.sizer
             # self.params_transform = {'crop_size_y': y, 'crop_size_x': x, 'stride': 1, 'sigma': self.config['gaussian_label']['sigma']}
-        pass
 
     def putGaussianMaps(self, center, accumulate_confid_map):
         crop_size_y = self.params_transform['crop_size_y']
@@ -350,7 +345,6 @@ class Coco(data.Dataset):
                 if (self.enable_photo_train == True and self.action == 'train') or (self.enable_photo_val and self.action == 'val'):
                     warped_img = imgPhotometric(warped_img.numpy().squeeze()) # numpy array (H, W, 1)
                     warped_img = torch.tensor(warped_img, dtype=torch.float32)
-                    pass
                 warped_img = warped_img.view(-1, H, W)
 
                 # warped_labels = warpLabels(pnts, H, W, homography)

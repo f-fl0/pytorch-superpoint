@@ -28,4 +28,3 @@ import logging
 def datasize(train_loader, config, tag='train'):
     logging.info('== %s split size %d in %d batches'%\
     (tag, len(train_loader)*config['model']['batch_size'], len(train_loader)))
-    pass

@@ -2,12 +2,9 @@
 """
 
 import argparse
-import time
-import csv
 import yaml
 import os
 import logging
-from pathlib import Path
 import torch
 
 import numpy as np
@@ -15,9 +12,7 @@ from tqdm import tqdm
 
 from tensorboardX import SummaryWriter
 
-from utils.utils import tensor2array, save_checkpoint, load_checkpoint, save_path_formatter
 from settings import EXPER_PATH
-from utils.loader import dataLoader, modelLoader, pretrainedLoader
 from utils.utils import getWriterPath
 
 # from utils.logging import *
@@ -150,7 +145,6 @@ def export_descriptor(config, output_dir, args):
     save_file = save_output / "export.txt"
     with open(save_file, "a") as myfile:
         myfile.write("output pairs: " + str(count) + '\n')
-    pass
 
 
 

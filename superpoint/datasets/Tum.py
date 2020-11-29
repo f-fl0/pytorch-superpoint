@@ -6,23 +6,15 @@ Date: 2019/12/12
 """
 
 import numpy as np
-import tensorflow as tf
-import torch
 
 # from pathlib import Path
 from pathlib import Path
-import torch.utils.data as data
 import random
 
 # from .base_dataset import BaseDataset
-from settings import DATA_PATH, EXPER_PATH
 from utils.tools import dict_update
-import cv2
 import logging
-from numpy.linalg import inv
 
-from utils.utils import homography_scaling_torch as homography_scaling
-from utils.utils import filter_points
 
 # from Kitti import Kitti
 from datasets.Coco import Coco

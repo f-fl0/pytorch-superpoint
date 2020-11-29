@@ -5,13 +5,9 @@
 
 import numpy as np
 import torch
-from torch.autograd import Variable
-import torch.backends.cudnn as cudnn
 import torch.optim
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.utils.data
-from tqdm import tqdm
 
 
 def labels2Dto3D(cell_size, labels):
@@ -202,7 +198,6 @@ class SuperPointFrontend_torch(object):
         input:
             pts: tensor [N x 2]
         """
-        from utils.utils import toNumpy
         from utils.losses import extract_patch_from_points
         from utils.losses import soft_argmax_2d
         from utils.losses import norm_patches
@@ -317,7 +312,6 @@ class SuperPointFrontend_torch(object):
             pts_subpixel[:2,:] += points_res
             if verbose: print("after: ", pts_subpixel[:,:5])
         return pts_subpixel
-        pass
 
     def run(self, inp, onlyHeatmap=False, train=True):
         """ Process a numpy image to extract points and descriptors.
@@ -352,8 +346,7 @@ class SuperPointFrontend_torch(object):
                 semi, coarse_desc = outs['semi'], outs['desc']
 
         # as tensor
-        from utils.utils import labels2Dto3D, flattenDetection
-        from utils.d2s import DepthToSpace
+        from utils.utils import flattenDetection
         # flatten detection
         heatmap = flattenDetection(semi, tensor=True)
         self.heatmap = heatmap

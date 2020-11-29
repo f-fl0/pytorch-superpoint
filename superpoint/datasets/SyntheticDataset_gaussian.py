@@ -519,7 +519,6 @@ class SyntheticDataset_gaussian(data.Dataset):
                     warped_img.numpy().squeeze()
                 )  # numpy array (H, W, 1)
                 warped_img = torch.tensor(warped_img, dtype=torch.float32)
-                pass
             warped_img = warped_img.view(-1, H, W)
 
             # warped_labels = warpLabels(pnts, H, W, homography)

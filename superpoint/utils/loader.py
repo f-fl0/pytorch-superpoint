@@ -12,7 +12,7 @@ import torch.optim
 import torch.utils.data
 
 
-from .utils import tensor2array, save_checkpoint, load_checkpoint, save_path_formatter
+from .utils import load_checkpoint
 # from settings import EXPER_PATH
 
 # from utils.loader import get_save_path

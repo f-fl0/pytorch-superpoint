@@ -2,17 +2,13 @@
 
 """
 
-import torch
 import numpy as np
 
 
-from utils.utils import inv_warp_image_batch
-from numpy.linalg import inv
 import cv2
 import matplotlib.pyplot as plt
 from utils.draw import plot_imgs
 
-from utils.utils import pltImshow
 path = '/home/yoyee/Documents/deepSfm/logs/superpoint_hpatches_pretrained/predictions/'
 for i in range(10):
     data = np.load(path + str(i) + '.npz')

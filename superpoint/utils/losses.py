@@ -10,7 +10,6 @@ import torch
 def print_var(points):
     print("points: ", points.shape)
     print("points: ", points)
-    pass
 
 # from utils.losses import pts_to_bbox
 def pts_to_bbox(points, patch_size):  
@@ -27,7 +26,6 @@ def pts_to_bbox(points, patch_size):
     pts_r = points+shift_r+1
     bbox = torch.stack((pts_l[:,1], pts_l[:,0], pts_r[:,1], pts_r[:,0]), dim=1)
     return bbox
-    pass
 
 # roi pooling
 # from utils.losses import _roi_pool
@@ -42,7 +40,6 @@ def _roi_pool(pred_heatmap, rois, patch_size=8):
     from torchvision.ops import roi_pool
     patches = roi_pool(pred_heatmap, rois.float(), (patch_size, patch_size), spatial_scale=1.0)
     return patches
-    pass
 
 # from utils.losses import norm_patches
 def norm_patches(patches):
@@ -200,7 +197,6 @@ def subpixel_loss_no_argmax(labels_2D, labels_res, pred_heatmap, **options):
     loss = torch.norm(loss, p=2, dim=-1).mean()
     # loss = loss.sum()/num_points
     return loss
-    pass
 
 if __name__ == '__main__':
 

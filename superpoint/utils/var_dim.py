@@ -2,7 +2,6 @@
 """
 
 import numpy as np
-import torch
 
 
 # from utils.var_dim import to3dim

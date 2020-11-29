@@ -7,8 +7,6 @@ Date: 2019/12/12
 
 ## basic
 import argparse
-import time
-import csv
 import yaml
 import os
 import logging
@@ -21,22 +19,11 @@ from tensorboardX import SummaryWriter
 
 ## torch
 import torch
-from torch.autograd import Variable
-import torch.backends.cudnn as cudnn
 import torch.optim
-import torch.nn as nn
-import torch.nn.functional as F
 import torch.utils.data
 
 ## other functions
-from utils.utils import (
-    tensor2array,
-    save_checkpoint,
-    load_checkpoint,
-    save_path_formatter,
-)
 from utils.utils import getWriterPath
-from utils.loader import dataLoader, modelLoader, pretrainedLoader
 from utils.utils import inv_warp_image_batch
 from models.model_wrap import SuperPointFrontend_torch, PointTracker
 
@@ -61,7 +48,6 @@ def combine_heatmap(heatmap, inv_homographies, mask_2D, device="cpu"):
     heatmap = torch.sum(heatmap, dim=0)
     mask_2D = torch.sum(mask_2D, dim=0)
     return heatmap / mask_2D
-    pass
 
 
 #### end util functions
@@ -200,7 +186,6 @@ def export_detector_homoAdapt_gpu(config, output_dir, args):
         pred:
             'prob' (keypoints): np (N1, 3)
     """
-    from utils.utils import pltImshow
     from utils.utils import saveImg
     from utils.draw import draw_keypoints
 
@@ -354,7 +339,6 @@ def export_detector_homoAdapt_gpu(config, output_dir, args):
     with open(save_file, "a") as myfile:
         myfile.write("Homography adaptation: " + str(homoAdapt_iter) + "\n")
         myfile.write("output pairs: " + str(count) + "\n")
-    pass
 
 
 if __name__ == "__main__":

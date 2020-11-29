@@ -83,9 +83,7 @@ def evaluate(args, **options):
     # for i in range(2):
     #     f = files[i]
     files.sort(key=lambda x: int(x[:-4]))
-    from numpy.linalg import norm
     from utils.draw import draw_keypoints
-    from utils.utils import saveImg
 
     for f in tqdm(files):
         f_num = f[:-4]
@@ -130,7 +128,6 @@ def evaluate(args, **options):
                 plt.tight_layout()
                 
                 plt.savefig(path_rep + '/' + f_num + '.png', dpi=300, bbox_inches='tight')
-                pass
 
 
         if args.homography:

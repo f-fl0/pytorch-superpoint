@@ -10,7 +10,6 @@ import torch
 # import torch.backends.cudnn as cudnn
 import torch.optim
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.utils.data
 # from tqdm import tqdm
 # from utils.loader import dataLoader, modelLoader, pretrainedLoader
@@ -105,7 +104,6 @@ class Train_model_heatmap(Train_model_frontend):
         # load model
         # self.net = self.loadModel(*config['model'])
         self.printImportantConfig()
-        pass
 
     ### loadModel inherited from Train_model_frontend
     # def loadModel(self):
@@ -238,7 +236,6 @@ class Train_model_heatmap(Train_model_frontend):
                 if if_warp:
                     outs_warp = self.net(img_warp.to(self.device))
                     semi_warp, coarse_desc_warp = outs_warp["semi"], outs_warp["desc"]
-                pass
 
         # detector loss
         from utils.utils import labels2Dto3D
@@ -455,7 +452,6 @@ class Train_model_heatmap(Train_model_frontend):
                     "warped_heatmap",
                 )
             # residuals
-            from utils.losses import do_log
 
             if self.gaussian:
                 # original: gt

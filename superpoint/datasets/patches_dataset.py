@@ -7,7 +7,6 @@ import numpy as np
 import cv2
 from pathlib import Path
 
-import torch
 import torch.utils.data as data
 
 # from .base_dataset import BaseDataset
@@ -44,7 +43,6 @@ class PatchesDataset(data.Dataset):
         self.transform = transform
         if config['preprocessing']['resize']:
             self.sizer = np.array(config['preprocessing']['resize'])
-        pass
 
     def __getitem__(self, index):
         """

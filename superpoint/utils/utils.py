@@ -8,9 +8,6 @@
 import numpy as np
 import torch
 from pathlib import Path
-import datetime
-import datetime
-from collections import OrderedDict
 import torch.nn.functional as F
 import torch.nn as nn
 # from utils.nms_pytorch import nms
@@ -43,7 +40,6 @@ def toNumpy(tensor):
 def save_path_formatter(args, parser):
     print("todo: save path")
     return Path('.')
-    pass
 '''
 def save_path_formatter(args, parser):
     def is_default(key, value):
@@ -125,7 +121,6 @@ def save_checkpoint(save_path, net_state, epoch, filename='checkpoint.pth.tar', 
     filename = '{}_{}_{}'.format(file_prefix[0], str(epoch), filename)
     torch.save(net_state, save_path/filename)
     print("save checkpoint to ", filename)
-    pass
 
 def load_checkpoint(load_path, filename='checkpoint.pth.tar'):
     file_prefix = ['superPointNet']
@@ -134,7 +129,6 @@ def load_checkpoint(load_path, filename='checkpoint.pth.tar'):
     checkpoint = torch.load(load_path/filename)
     print("load checkpoint from ", filename)
     return checkpoint
-    pass
 
 
 def saveLoss(filename, iter, loss, task='train', **options):

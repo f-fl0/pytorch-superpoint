@@ -21,15 +21,13 @@ from utils.utils import getWriterPath
 from settings import EXPER_PATH
 
 ## loaders: data, model, pretrained model
-from utils.loader import dataLoader, modelLoader, pretrainedLoader
-from utils.logging import *
+from utils.loader import dataLoader
 # from models.model_wrap import SuperPointFrontend_torch, PointTracker
 
 ###### util functions ######
 def datasize(train_loader, config, tag='train'):
     logging.info('== %s split size %d in %d batches'%\
     (tag, len(train_loader)*config['model']['batch_size'], len(train_loader)))
-    pass
 
 from utils.loader import get_save_path
 
@@ -39,7 +37,6 @@ from utils.loader import get_save_path
 ###### train script ######
 def train_base(config, output_dir, args):
     return train_joint(config, output_dir, args)
-    pass
 
 # def train_joint_dsac():
 #     pass
@@ -94,7 +91,6 @@ def train_joint(config, output_dir, args):
     except KeyboardInterrupt:
         print ("press ctrl + c, save model!")
         train_agent.saveModel()
-        pass
 
 if __name__ == '__main__':
     # global var

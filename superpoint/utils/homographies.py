@@ -7,7 +7,6 @@ from math import pi
 import cv2
 import numpy as np
 
-from superpoint.utils.tools import dict_update
 
 def sample_homography_np(
         shape, shift=0, perspective=True, scaling=True, rotation=True, translation=True,
@@ -53,7 +52,6 @@ def sample_homography_np(
     pts2 = margin + np.array([[0, 0], [0, patch_ratio],
                                  [patch_ratio, patch_ratio], [patch_ratio, 0]])
 
-    from numpy.random import normal
     from numpy.random import uniform
     from scipy.stats import truncnorm
 
@@ -148,7 +146,6 @@ def sample_homography(
         perspective_amplitude_y=0.1, patch_ratio=0.5, max_angle=pi/2,
         allow_artifacts=False, translation_overflow=0.):
     import tensorflow as tf
-    from tensorflow.contrib.image import transform as H_transform
     """Sample a random valid homography.
 
     Computes the homography transformation between a random patch in the original image

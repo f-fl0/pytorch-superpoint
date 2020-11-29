@@ -1,8 +1,6 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.patches import ConnectionPatch
 
 

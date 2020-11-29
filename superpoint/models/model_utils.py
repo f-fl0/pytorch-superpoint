@@ -4,7 +4,6 @@
 
 import torch
 import numpy as np
-from superpoint import utils as utils
 
 class SuperPointNet_process(object):
 
@@ -18,7 +17,6 @@ class SuperPointNet_process(object):
         self.conf_thresh = config.get('conf_thresh', 0.015)
         self.heatmap = None
         self.heatmap_nms_batch = None
-        pass
 
     # @staticmethod
     def pred_soft_argmax(self, labels_2D, heatmap):
@@ -29,7 +27,6 @@ class SuperPointNet_process(object):
         """
         patch_size=self.patch_size
         device=self.device
-        from superpoint.utils.losses import norm_patches
 
         outs = {}
         # extract patches
@@ -139,7 +136,6 @@ class SuperPointNet_process(object):
         self.heatmap = heatmap
         self.heatmap_nms_batch = heatmap_nms_batch
         return heatmap_nms_batch
-        pass
 
     @staticmethod
     def heatmap_nms(heatmap, nms_dist=4, conf_thresh=0.015):
