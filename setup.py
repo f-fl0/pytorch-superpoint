@@ -12,10 +12,10 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/eric-yyjau/pytorch-superpoint",
-    # packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(),
     # py_modules=['datasets', 'models', 'utils', 'train4', 'helloworld'],
-    py_modules=['superpoint'],
-    package_dir={'.': '.'},
+    # py_modules=['superpoint'],
+    # package_dir={'.': '.'},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
