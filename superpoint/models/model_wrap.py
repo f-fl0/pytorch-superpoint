@@ -88,7 +88,7 @@ class SuperPointFrontend_torch(object):
             params = self.config['model']['params']
             print("model: ", model)
 
-            from utils.loader import modelLoader
+            from superpoint.utils.loader import modelLoader
             self.net = modelLoader(model=model, **params)
             # from models.SuperPointNet import SuperPointNet
             # self.net = SuperPointNet()
@@ -346,7 +346,7 @@ class SuperPointFrontend_torch(object):
                 semi, coarse_desc = outs['semi'], outs['desc']
 
         # as tensor
-        from utils.utils import flattenDetection
+        from superpoint.utils.utils import flattenDetection
         # flatten detection
         heatmap = flattenDetection(semi, tensor=True)
         self.heatmap = heatmap
@@ -364,7 +364,7 @@ class SuperPointFrontend_torch(object):
         # print("heapmap shape: ", heatmap.shape)
         pts = [self.getPtsFromHeatmap(heatmap[i,:,:,:].cpu().detach().numpy()) for i in range(batch_size)]
         self.pts = pts
-        
+
 
 
         if self.subpixel:
